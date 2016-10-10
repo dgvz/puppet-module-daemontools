@@ -8,7 +8,7 @@ exec 2>&1
 cd <%= @daemontools_service_directory %> || exit 1
 
 <% @daemontools_service_environment.each do |k, v| -%>
-export <%= k %>='<%= v.gsub("'", "'\\\\''") %>'
+export <%= k %>='<%= v.to_s.gsub("'", "'\\\\''") %>'
 <% end -%>
 
 <% if @daemontools_service_umask -%>
